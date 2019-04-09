@@ -1,0 +1,56 @@
+
+
+
+
+
+
+
+void updatePlayer(Hero* hero , Acteurs* acteurs)
+{
+
+SDL_PollEvent (&acteurs->event);
+
+switch(acteurs->event.type)
+{
+case SDL_KEYDOWN :
+switch(acteurs->event.key.keysym.sym)
+{
+case SDLK_LEFT :
+hero->x -= PLAYER_SPEED ;
+if (hero->x < 0)
+{
+hero->x = 0 ;
+}
+if(hero->direction == RIGHT)
+{
+hero->direction = LEFT ;
+hero->sprite = SDL_LoadBMP("sprite_hero_left.bmp") ;
+}
+break ;
+}
+break ;
+
+
+
+case SDLK_KEYUP :
+switch(acteurs->event.key.keysym.sym)
+{
+case SDLK_RIGHT :
+hero->x += PLAYER_SPEED ;
+if (hero->x + PLAYER_WIDTH >= SCREEN_WIDTH)
+{
+hero->x = SCREEN_WIDTH - PLAYER_WIDTH ;
+}
+if(hero->direction == LEFT)
+{
+hero->direction = RIGHT ;
+hero->sprite = SDL_LoadBMP("sprite_hero_right.bmp") ;
+}
+break ;
+}
+
+break ;
+
+}
+
+}
