@@ -1,4 +1,4 @@
-/**  * @file main.c  * @brief le menu du jeu   * @author  Dires    * @date May 8, 2019  *  * affichage du menu du jeu  *  */
+/**  * @file main.c  * @brief le menu du jeu   * @author  Dires   *@version 1.0 * @date May 8, 2019  *  * affichage du menu du jeu  *  */
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -117,6 +117,9 @@ case SDL_KEYDOWN:
 				{
              switch(event.key.keysym.sym)
                 {
+		case SDLK_ESCAPE:
+						exit(0);
+					break;
                     case SDLK_UP:
 			curseur--;
 			Mix_PlayChannel(-1, ding, 0);
